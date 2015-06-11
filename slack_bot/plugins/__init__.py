@@ -1,11 +1,5 @@
 # coding=utf-8
+from .github_issue import GithubIssue
 __all__ = [
-    'github_issue',
-    'orz',
-    'wikipedia',
-    'qiubai',
-    'earthquake',
-    'airpollution',
-    'weather',
-    'simsimi',
+    'GithubIssue',
 ]

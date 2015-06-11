@@ -8,10 +8,9 @@ import plugins
 from ext import redis_store
 
 
-plugin_modules = []
-for plugin_name in plugins.__all__:
-    __import__('slack_bot.plugins.%s' % plugin_name)
-    plugin_modules.append(getattr(plugins, plugin_name))
+plugin_modules = [
+    getattr(plugins, plugin_name) for plugin_name in plugins.__all__
+]
 
 
 def create_app():
