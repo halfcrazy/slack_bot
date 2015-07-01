@@ -4,8 +4,12 @@ from multiprocessing import TimeoutError
 from multiprocessing.pool import ThreadPool
 from functools import wraps
 
+from flask import current_app as app
 
-def timeout(seconds):
+
+def timeout(seconds=None, default='timeout'):
+    if not seconds:
+        seconds = app.config.get('TIMEOUT', 25)
     def decorator(fn):
         @wraps(fn)
         def wrapper(*args, **kwargs):
@@ -14,6 +18,9 @@ def timeout(seconds):
             try:
                 return async_result.get(seconds)
             except TimeoutError:
-                return kwargs.pop('default', {'text': 'timeout'})
+                if callable(default):
+                    return default()
+                else:
+                    return default
         return wrapper
     return decorator

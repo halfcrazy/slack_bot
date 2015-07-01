@@ -8,6 +8,8 @@ SECRET_KEY = 'o\xdd\x02I\x0b\xbbBP4\x97\xab\xe0GF\xfba\x14_\x03\xa9\xe8\xfa\xf8c
 SLACK_CHAT_TOKEN = 'xoxp-4231087425-4231087427-4463321974-03a74a'
 # 你希望slack的outgoing-webhook调用你的回调的路由
 SLACK_CALLBACK = '/slack_callback'
+# 回调函数超时时间
+TIMEOUT = 25
 # 使用Github-issue插件需要指定组织的地址
 ORG_NAME = 'python-cn'
 # 百度地图api key, 注册地址: http://lbsyun.baidu.com/apiconsole/key
