@@ -1,8 +1,9 @@
 # coding=utf-8
+import time
 import os
 import re
 
-from flask import Flask
+from flask import Flask, g
 
 from flask_slackbot import SlackBot
 
@@ -37,10 +38,14 @@ def create_app(config=None):
     slackbot.set_handler(callback)
     slackbot.filter_outgoing(_filter)
 
+    @app.before_request
+    def start_time_it():
+        g.time = time.time()
+
     return app
 
 
-@timeout(30.0)
+@timeout(g, 30.0)
 def callback(kwargs):
     s = convert2str(kwargs['text'])
     trigger_word = convert2str(kwargs['trigger_word'])

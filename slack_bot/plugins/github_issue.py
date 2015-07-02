@@ -37,7 +37,8 @@ def handle(data):
 
 
 if __name__ == '__main__':
-    from flask import Flask
-    app = Flask(__name__)
-    app.config['org_name'] = 'python-cn'
-    print handle(None)
+    # from flask import Flask
+    # app = Flask(__name__)
+    # app.config['org_name'] = 'python-cn'
+    # print handle(None)
+    pass
